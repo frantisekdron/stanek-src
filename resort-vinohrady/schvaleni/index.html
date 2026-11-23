@@ -1,0 +1,461 @@
+<title>Resort Vinohrady kampaň</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: jeden sloupec jako schvalovací list zakázky; barvy a písmo převzaté z resortvinohrady.cz (Poppins, olivová, teplá bílá). */
+:root{
+  --bg: oklch(97.5% .011 88);
+  --card: oklch(99.5% .004 88);
+  --fg: oklch(20.5% .018 75);
+  --muted: oklch(47% .02 68);
+  --line: oklch(86% .018 83);
+  --soft: oklch(94% .012 83);
+  --accent: oklch(48% .07 107);
+  --accent-soft: oklch(93% .035 107);
+  --a: oklch(48% .07 107);
+  --b: oklch(45% .11 22);
+  --c: oklch(58% .09 70);
+  --warn: oklch(55% .13 55);
+  --warn-soft: oklch(95% .03 75);
+  --onaccent: oklch(98% .006 90);
+  --f-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --f-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg: oklch(18% .012 75); --card: oklch(22% .013 75); --fg: oklch(93% .01 85); --muted: oklch(72% .015 80);
+  --line: oklch(33% .015 78); --soft: oklch(26% .013 78); --accent: oklch(72% .09 107); --accent-soft: oklch(30% .04 107);
+  --a: oklch(72% .09 107); --b: oklch(70% .12 22); --c: oklch(78% .1 75); --warn: oklch(78% .12 65); --warn-soft: oklch(30% .04 65);
+  --onaccent: oklch(18% .012 75); color-scheme: dark}}
+:root[data-theme="dark"]{
+  --bg: oklch(18% .012 75); --card: oklch(22% .013 75); --fg: oklch(93% .01 85); --muted: oklch(72% .015 80);
+  --line: oklch(33% .015 78); --soft: oklch(26% .013 78); --accent: oklch(72% .09 107); --accent-soft: oklch(30% .04 107);
+  --a: oklch(72% .09 107); --b: oklch(70% .12 22); --c: oklch(78% .1 75); --warn: oklch(78% .12 65); --warn-soft: oklch(30% .04 65);
+  --onaccent: oklch(18% .012 75); color-scheme: dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.6 var(--f-body);margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 72px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.45rem;font-weight:600;margin-bottom:.35rem}
+h3{font-size:1.05rem;font-weight:600}
+p{margin:0}
+.eyebrow{font:500 .72rem/1.2 var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.lead{color:var(--muted);max-width:68ch}
+header.top{display:grid;gap:18px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:end;padding-bottom:22px;border-bottom:1px solid var(--line)}
+header.top img{border-radius:6px;display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.status{display:inline-flex;gap:8px;align-items:center;font:500 .78rem var(--f-mono);background:var(--warn-soft);color:var(--warn);padding:4px 10px;border-radius:999px;margin-top:12px}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px 14px;padding-block:14px;border-bottom:1px solid var(--line);font-size:.86rem}
+nav.toc a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--line)}
+nav.toc a:hover,nav.toc a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+section{padding-block:38px 6px;display:grid;gap:18px}
+.sechead{display:grid;gap:6px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:860px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}header.top{grid-template-columns:1fr}}
+@media (max-width:560px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.box{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.fact{display:grid;gap:2px}
+.fact b{font:600 1.35rem/1.2 var(--f-display);font-variant-numeric:tabular-nums}
+.fact span{color:var(--muted);font-size:.86rem}
+.list{margin:0;padding-left:1.1em;display:grid;gap:4px}
+.list li::marker{color:var(--accent)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.92rem}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .72rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;white-space:nowrap}
+.tag{display:inline-block;font:500 .68rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:4px;border:1px solid currentColor;white-space:nowrap}
+.tA{color:var(--a)}.tB{color:var(--b)}.tC{color:var(--c)}
+.tOpt{color:var(--muted)}
+.concepts .box{border-top:3px solid var(--k);display:grid;gap:10px;align-content:start}
+.concepts .k{font:700 2rem/1 var(--f-display);color:var(--k)}
+.copy{background:var(--soft);border-radius:6px;padding:10px 12px;font-size:.9rem;display:grid;gap:6px}
+.copy em{font-style:normal;color:var(--muted);font:500 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase}
+.board{display:grid;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.beat{display:grid;grid-template-columns:86px 150px minmax(0,1fr);gap:14px;padding:10px 14px;border-bottom:1px solid var(--line);align-items:start}
+.beat:last-child{border-bottom:0}
+.beat .tc{font:500 .8rem var(--f-mono);color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
+.beat img{width:150px;aspect-ratio:16/10;object-fit:cover;border-radius:4px;display:block}
+.beat .t{display:grid;gap:3px;font-size:.9rem;min-width:0}
+.beat .t b{font-family:var(--f-display);font-weight:600}
+.beat .fx{font:500 .74rem var(--f-mono);color:var(--accent)}
+@media (max-width:560px){.beat{grid-template-columns:1fr}.beat img{width:100%}}
+.formats{display:flex;flex-wrap:wrap;gap:8px;font-size:.85rem}
+.formats span{border:1px solid var(--line);border-radius:4px;padding:3px 8px;background:var(--card)}
+figure{margin:0;display:grid;gap:6px;min-width:0}
+figure img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:6px;display:block;background:var(--soft)}
+figcaption{font-size:.84rem;color:var(--muted)}
+.shot{display:grid;gap:8px;align-content:start}
+.shot .id{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.shot .id b{font:600 .95rem var(--f-mono)}
+.shot p{font-size:.88rem}
+.shot .meta{font:500 .74rem var(--f-mono);color:var(--muted)}
+.prompt{font:400 .76rem/1.5 var(--f-mono);color:var(--muted);background:var(--soft);border-radius:4px;padding:6px 8px;overflow-wrap:anywhere}
+.pair{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:start}
+@media (max-width:560px){.pair{grid-template-columns:1fr}}
+.lbl{position:relative}
+.lbl::after{content:attr(data-l);position:absolute;left:8px;top:8px;font:600 .64rem var(--f-mono);letter-spacing:.08em;background:oklch(20% .02 75 / .75);color:oklch(98% .006 90);padding:3px 6px;border-radius:3px}
+.note{border-left:3px solid var(--warn);background:var(--warn-soft);padding:10px 14px;border-radius:0 6px 6px 0;font-size:.9rem}
+.ok{border-left-color:var(--accent);background:var(--accent-soft)}
+.steps{counter-reset:s;display:grid;gap:0;border:1px solid var(--line);border-radius:8px;background:var(--card);overflow:hidden}
+.steps li{list-style:none;counter-increment:s;display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);align-items:baseline;font-size:.9rem}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);font:600 .85rem var(--f-mono);color:var(--accent)}
+.steps .gate{font:500 .7rem var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.steps .done{color:var(--accent)}
+ol.q{margin:0;padding-left:1.4em;display:grid;gap:10px}
+ol.q li{padding-left:4px}
+ol.q li::marker{font:600 .9rem var(--f-mono);color:var(--accent)}
+.foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div style="display:grid;gap:10px">
+    <span class="eyebrow">Rentia · Resort Vinohrady · Hlohovec</span>
+    <h1>Kampaň Resort Vinohrady: plán ke schválení</h1>
+    <p class="lead">Postup jako u Starých Splavů: nejdřív hlavní film na šířku i na výšku, z čistého masteru pak tři reklamy A, B, C ve formátech 16:9, 9:16 a 1:1, bannery, POI z dronu a 3D koláč. Fakta níže jsou převzatá z resortvinohrady.cz, PDF o správě pronájmu a webu Usedlosti.</p>
+    <span class="status">● nic se negenerovalo · čekám na tvoje fotky, drony a FPV</span>
+  </div>
+  <img src="img/titulni.jpg" alt="Vizualizace hlavní budovy Resort Vinohrady za soumraku s rozsvícenou fasádou">
+</header>
+
+<nav class="toc" aria-label="Obsah">
+  <a href="#projekt">Projekt</a><a href="#nabidka">Co se komu nabízí</a><a href="#test4">Poučení z TEST4</a><a href="#abc">Koncept ABC</a><a href="#videa">Videa a storyboardy</a><a href="#kling">Kling</a><a href="#promeny">Start/end proměny</a><a href="#seedance">Seedance (lidé)</a><a href="#efekty">Efekty</a><a href="#dron">Dron, pozemek, POI</a><a href="#bannery">Bannery</a><a href="#kredity">Kredity</a><a href="#postup">Postup</a><a href="#otazky">Otázky</a>
+</nav>
+
+<!-- PROJEKT -->
+<section id="projekt">
+  <div class="sechead"><span class="eyebrow">01 · Ověřená fakta</span><h2>Projekt v kostce</h2>
+  <p class="lead">Rekonstrukce fungujícího Penzionu Usedlost pod vinohrady (otevřen 2008, 14 let od kolaudace) na aparthotel. Prodej běží v neveřejném předprodeji přes přístupový kód.</p></div>
+  <div class="grid g4">
+    <div class="box fact"><b>16 apartmánů</b><span>2 budovy (A, B), 20,5–43,4 m², kapacita 54 osob</span></div>
+    <div class="box fact"><b>2 818 750 Kč</b><span>nejnižší cena vč. DPH (A.11), nejvyšší 6 207 500 Kč; 130–137 500 Kč/m²</span></div>
+    <div class="box fact"><b>Q4 2027</b><span>předání a otevření; zápis do KN Q1 2027</span></div>
+    <div class="box fact"><b>12 volných</b><span>4 jednotky v ústní rezervaci: A.11, A.12, A.24, B.21</span></div>
+  </div>
+  <div class="grid g2">
+    <div class="box"><h3>Resort a služby</h3>
+      <ul class="list">
+        <li>Vnitřní bazén v budově A, prosklené stěny do zahrady</li>
+        <li>Wellness ~60 m² v budově B: sauna (finská i parní), vířivka, odpočívárna</li>
+        <li>Restaurace 132,3 m² (snídaně a večeře, přes den samoobsluha)</li>
+        <li>Vinárna 76,7 m², otevřené degustace s hlohoveckými vinaři každý pátek a sobotu</li>
+        <li>Konference 108,4 m² pro 50 lidí</li>
+        <li>Recepce, 2 kolárny, půjčovna kol, nabíjení elektrokol</li>
+        <li>Zahrada s hřištěm mezi A a B, louka za B na piknik a kolektivní sporty</li>
+        <li>Standard na klíč ve dvou atmosférách BLACK / WHITE, parkovací místo 250 000 Kč vč. DPH</li>
+      </ul></div>
+    <div class="box"><h3>Lokalita (časy z webu)</h3>
+      <dl class="kv">
+        <dt>Valtice</dt><dd>3,9 km · 6 min</dd>
+        <dt>Lednice</dt><dd>5,1 km · 6 min</dd>
+        <dt>Mikulov</dt><dd>12 km · 18 min</dd>
+        <dt>Břeclav</dt><dd>9 km · železniční uzel</dd>
+        <dt>Brno</dt><dd>64 km · 51 min</dd>
+        <dt>Vídeň</dt><dd>90 km · cca hodina</dd>
+        <dt>Bratislava</dt><dd>96 km · cca hodina</dd>
+        <dt>V katastru</dt><dd>Lednické rybníky vč. Nesytu, Hraniční zámeček</dd>
+      </dl>
+      <p style="margin-top:10px;font-size:.88rem;color:var(--muted)">Lednicko-valtický areál (UNESCO), Mikulovská vinařská podoblast, Pálava a Nové Mlýny, Stezka podél Dyje, Stezka železné opony. Časy pro koláč ještě přeměřím (OSRM).</p></div>
+  </div>
+  <div class="grid g3">
+    <figure><img src="img/dron-den.jpg" alt="Denní snímek z dronu, okolí černobíle, areál barevně"><figcaption>Web: dron den, okolí do ČB, areál barevně. Stejný princip použiju na vyznačení pozemku.</figcaption></figure>
+    <figure><img src="img/dron-noc2.jpg" alt="Noční snímek z dronu, areál a obec s rybníkem"><figcaption>Web: dron noc. Rybník v pozadí se hodí do POI.</figcaption></figure>
+    <figure><img src="img/ss-vyhlidka.jpg" alt="Vyhlídka s kioskem Usedlosti ve vinicích"><figcaption>Usedlost: vyhlídka s kioskem ve vinicích. Patří k projektu? (otázka 8)</figcaption></figure>
+  </div>
+  <p class="note ok">Lidé za projektem: SFCT HLOHOVEC s.r.o. (RENTIA INVEST) vlastní projekt, RENTIA ESTATE prodává, RENTIA PLACES spravuje pronájem, myRENTIA dělá crowdfunding, rekonstrukci vede PRADOM DEVELOPMENT. Kontakt na kartu: Matěj Staněk (obchod), +420 734 244 919, Vinohrady@rentiagroup.com.</p>
+</section>
+
+<!-- NABIDKA -->
+<section id="nabidka">
+  <div class="sechead"><span class="eyebrow">02 · Jak se do projektu vstupuje</span><h2>Co se komu nabízí a za kolik</h2>
+  <p class="lead">Tři cesty, které z webu vycházejí. Na nich stojí tvoje „vlastnit, užívat, vydělávat“ (web to píše jako Vlastnictví · Volnost · Správa) a crowdfunding myRENTIA.</p></div>
+  <div class="grid g3">
+    <div class="box"><span class="eyebrow">Vlastnit</span><h3 style="margin-top:6px">Koupě celé jednotky</h3>
+      <ul class="list" style="margin-top:8px">
+        <li>16 jednotek ve 3 typech: studio pro 2, rodinné studio pro 4, rodinný apartmán pro 4 se samostatnou ložnicí</li>
+        <li>od 2 818 750 Kč vč. DPH, hypotéku pomohou připravit</li>
+        <li>zápis do katastru Q1 2027, vybavení na klíč</li>
+      </ul></div>
+    <div class="box"><span class="eyebrow">Užívat + vydělávat</span><h3 style="margin-top:6px">Vlastní pobyty a pronájem</h3>
+      <ul class="list" style="margin-top:8px">
+        <li>vlastní užívání bez omezení počtu dní</li>
+        <li>když tam majitel není, pronajímá RENTIA PLACES: 70 % čistých tržeb majitelům, 30 % správci</li>
+        <li>výnosové pooly: Rodinný apartmán (8), Studio (5), Rodinné studio (3); dělí se po dnech</li>
+        <li>výnos web výslovně negarantuje</li>
+      </ul></div>
+    <div class="box"><span class="eyebrow">Investovat od 500 000 Kč</span><h3 style="margin-top:6px">Crowdfunding myRENTIA</h3>
+      <ul class="list" style="margin-top:8px">
+        <li>pro ty, kdo nemají na celý apartmán</li>
+        <li>úrok 6 % p.a. vyplácený každý měsíc</li>
+        <li>zajištěno zástavou na konkrétní jednotce</li>
+        <li>po 5 letech podíl na zisku z růstu hodnoty</li>
+      </ul></div>
+  </div>
+  <div class="grid g2">
+    <div class="box"><h3>Výzva k akci (CTA)</h3>
+      <p style="margin-top:6px;font-size:.92rem">Web je v režimu předprodeje. Hlavní tlačítko <b>Získat přednostní přístup</b> pošle přístupový kód e-mailem do neveřejné prezentace (to je Lead v pixelu). Druhá cesta je „Mám přístupový kód“. Reklama tedy nemá prodávat apartmán, ale <b>přístup k neveřejné nabídce</b>. Tlačítko v Meta: Zaregistrovat se.</p></div>
+    <div class="box"><h3>Modelová čísla z webu</h3>
+      <dl class="kv" style="margin-top:6px">
+        <dt>Cena noci v kalkulačce</dt><dd>3 200 / 3 600 / 4 200 / 4 900 Kč podle typu</dd>
+        <dt>Obsazenost</dt><dd>volba 40 / 50 / 60 %</dd>
+        <dt>Odpočty</dt><dd>Booking 15 %, správa 30 %, provozní náklady</dd>
+        <dt>Příklad z PDF</dt><dd>10 000 Kč tržba → 7 500 čistá → 5 250 majitelům</dd>
+      </dl>
+      <p style="margin-top:8px;font-size:.84rem;color:var(--muted)">Do reklamy dávám jen „70 % z čistých tržeb majitelům“, žádné procento výnosu.</p></div>
+  </div>
+</section>
+
+<!-- TEST4 -->
+<section id="test4">
+  <div class="sechead"><span class="eyebrow">03 · Z reportu 28. 10.–2. 11.</span><h2>Co z TEST4 plyne pro kreativu</h2></div>
+  <div class="grid g4">
+    <div class="box fact"><b>79 leadů</b><span>89 Kč za lead, útrata 7 029 Kč</span></div>
+    <div class="box fact"><b>11,3 %</b><span>web převádí prokliky dobře, slabší je reklama</span></div>
+    <div class="box fact"><b>74 Kč</b><span>Bannery 01 a 04; 02 a 03 za 103 a 124 Kč</span></div>
+    <div class="box fact"><b>67 → 167 Kč</b><span>cena za lead rostla, kreativy se okoukaly</span></div>
+  </div>
+  <ul class="list">
+    <li>Chybí 9:16 pro Reels a Stories. Proto tři svislá videa a svislé bannery v každém konceptu.</li>
+    <li>Facebook Feed 84 Kč, Instagram Feed 114 Kč: na FB dávám 4:5 a 1:1, na IG hlavně 9:16.</li>
+    <li>18–24 bez leadu, nejlevnější 45–54 (77 Kč) a 25–34 (72 Kč). Minimální věk 25. Texty A píšu spíš pro 45+, B pro 25–54, C pro všechny, cílení v testu je ale pro všechny stejné.</li>
+    <li>Všechny čtyři bannery měly stejný text, rozdíl dělal vizuál. Teď testujeme sdělení (A/B/C) a v každém dva vizuály.</li>
+  </ul>
+</section>
+
+<!-- ABC -->
+<section id="abc">
+  <div class="sechead"><span class="eyebrow">04 · Tři sdělení, stejné cílení a rozpočet</span><h2>Koncept ABC</h2>
+  <p class="lead">Každý koncept má vlastní video ve třech formátech a vlastní bannery. Test 7 dní, stejné publikum (ČR, 25+, Advantage+), měříme cenu za lead a kvalitu leadů v CRM. Každá reklama končí větou „Je to pro vás, pokud…“ a jedním tlačítkem.</p></div>
+  <div class="grid g3 concepts">
+    <div class="box" style="--k:var(--a)"><span class="k">A</span><h3>Vlastnit · Užívat · Vydělávat</h3>
+      <p style="font-size:.9rem">Koupě celé jednotky. Tři slova jako tři kapitoly videa. Píšu pro kupce 35–64 s vlastním kapitálem nebo hypotékou.</p>
+      <div class="copy"><em>Hlavní text</em>16 apartmánů v novém RESORT VINOHRADY mezi Lednicí a Valticemi. Užívejte ho, kdy chcete. Když tam nejste, pronájem i provoz za vás zajistí RENTIA PLACES. Je to pro vás, pokud chcete apartmán, který si užijete i pronajmete.</div>
+      <div class="copy"><em>Titulek</em>Vlastní apartmán u Lednice a Valtic</div>
+      <div class="copy"><em>Tlačítko → cíl</em>Zaregistrovat se → přístupový kód</div>
+    </div>
+    <div class="box" style="--k:var(--b)"><span class="k">B</span><h3>Od 500 000 Kč</h3>
+      <p style="font-size:.9rem">Crowdfunding myRENTIA. Příběh „fungující penzion, nová etapa“: současný stav z dronu se promění ve vizualizaci. Píšu pro 25–54.</p>
+      <div class="copy"><em>Hlavní text</em>Nemáte na celý apartmán? S myRENTIA vstoupíte do RESORT VINOHRADY od 500 000 Kč. Úrok 6 % ročně vyplácený každý měsíc, zajištěno zástavou na konkrétním apartmánu. Je to pro vás, pokud chcete peníze v nemovitosti, kterou můžete navštívit.</div>
+      <div class="copy"><em>Titulek</em>Apartmán u Lednice od 500 000 Kč</div>
+      <div class="copy"><em>Tlačítko → cíl</em>Zaregistrovat se → podklady k investici</div>
+    </div>
+    <div class="box" style="--k:var(--c)"><span class="k">C</span><h3>Místo, které má všechno</h3>
+      <p style="font-size:.9rem">Lokalita a život v resortu po celý rok. Nese Seedance s lidmi, drony, koláč a POI. Široké publikum, i lidé, kteří o investici zatím nepřemýšlí.</p>
+      <div class="copy"><em>Hlavní text</em>Valtice 6 minut, Lednice 6 minut, Mikulov 18. Vinárna s degustacemi, bazén, wellness a kola přímo v resortu. Je to pro vás, pokud chcete vlastní místo na jižní Moravě, kam se budete rádi vracet.</div>
+      <div class="copy"><em>Titulek</em>Apartmán v srdci Lednicko-valtického areálu</div>
+      <div class="copy"><em>Tlačítko → cíl</em>Zaregistrovat se → přístupový kód</div>
+    </div>
+  </div>
+  <p class="note">B je finanční nabídka (úrok, zástava). Na Metě ji počítám jako samostatnou kampaň, protože pravděpodobně spadne do zvláštní kategorie finančních služeb s omezeným cílením. Texty s „6 % p.a.“ musí schválit Rentia nebo jejich advokátka a ve videu bude malé upozornění na riziko. U A a C držím pravidlo ze Splavů: v titulcích ve videu žádné „investice / výnos“.</p>
+</section>
+
+<!-- VIDEA -->
+<section id="videa">
+  <div class="sechead"><span class="eyebrow">05 · 9 videí ze dvou masterů</span><h2>Videa a storyboardy</h2>
+  <p class="lead">Jako u Splavů: nejdřív dva čisté mastery (16:9 a nativní 9:16 z tvých fotek a záběrů na výšku, bez ořezů), schválíš je a z nich střihnu reklamy. Krátké verze se už znovu nebarví ani neořezávají. Titulky v reklamách 1,6× větší, štítky VIZUALIZACE a SKUTEČNÝ STAV.</p></div>
+  <div class="formats"><span>16:9 · YouTube, FB in-stream · 30–40 s</span><span>9:16 · Reels, Stories · 20–30 s, háček do 1,5 s</span><span>1:1 · FB a IG Feed · 20–25 s</span><span>Hlavní film 16:9 a 9:16 · 60–75 s</span></div>
+
+  <h3><span class="tag tA">A</span>&nbsp; Vlastnit · Užívat · Vydělávat <span style="color:var(--muted);font-weight:500">· 30 s</span></h3>
+  <div class="board">
+    <div class="beat"><span class="tc">0:00–0:02</span><img src="img/dron-den3.jpg" alt=""><div class="t"><b>FPV nad vinicí, průlet k resortu</b><span>„Apartmán mezi Lednicí a Valticemi“</span><span class="fx">háček · speed ramp</span></div></div>
+    <div class="beat"><span class="tc">0:02–0:06</span><img src="img/dron-den.jpg" alt=""><div class="t"><b>Dron oblet, okolí do ČB, pozemek barevně</b><span>„Dvě budovy. Jedna zahrada.“ + štítky Budova A, Budova B, Zahrada</span><span class="fx">kreslený obrys pozemku · barevná izolace</span></div></div>
+    <div class="beat"><span class="tc">0:06–0:10</span><img src="img/titulni.jpg" alt=""><div class="t"><b>VLASTNIT · fasáda se rozsvítí (Kling K01)</b><span>„16 apartmánů od 2,8 mil. Kč · zápis do katastru 2027“</span><span class="fx">text za střechou</span></div></div>
+    <div class="beat"><span class="tc">0:10–0:16</span><img src="img/a11-predsina.jpg" alt=""><div class="t"><b>UŽÍVAT · průchod předsíní do ložnice (P6), obývák se sluncem (K06), káva u okna (S3)</b><span>„Kdykoli. Bez limitu dní.“</span><span class="fx">průchod dveřmi</span></div></div>
+    <div class="beat"><span class="tc">0:16–0:22</span><img src="img/vinoteka2.jpg" alt=""><div class="t"><b>VYDĚLÁVAT · degustace (S2), bazén (K02)</b><span>„Když tam nejste, pronajímá RENTIA PLACES · 70 % z čistých tržeb majitelům“</span><span class="fx">match cut sklenka ↔ hladina</span></div></div>
+    <div class="beat"><span class="tc">0:22–0:27</span><img src="img/zamek-valtice.jpg" alt=""><div class="t"><b>3D koláč s časy</b><span>Valtice 6 min · Lednice 6 min · Mikulov 18 min</span><span class="fx">koláč ze skillu</span></div></div>
+    <div class="beat"><span class="tc">0:27–0:30</span><img src="img/dron-noc.jpg" alt=""><div class="t"><b>Karta</b><span>„Neveřejná nabídka. Přístupový kód pošleme e-mailem.“ · RESORT VINOHRADY · RENTIA</span><span class="fx">světelný přejezd po logu</span></div></div>
+  </div>
+
+  <h3><span class="tag tB">B</span>&nbsp; Od 500 000 Kč <span style="color:var(--muted);font-weight:500">· 30 s</span></h3>
+  <div class="board">
+    <div class="beat"><span class="tc">0:00–0:02</span><img src="img/dron-noc2.jpg" alt=""><div class="t"><b>Velké číslo přes noční dron</b><span>„Nemáte na celý apartmán? Od 500 000 Kč.“</span><span class="fx">háček · číslo naskočí na dobu</span></div></div>
+    <div class="beat"><span class="tc">0:02–0:07</span><img src="img/ss-fasada.jpg" alt=""><div class="t"><b>SKUTEČNÝ STAV: fungující penzion → VIZUALIZACE: Resort Vinohrady (P5)</b><span>„Fungující penzion. Nová etapa 2027.“</span><span class="fx">pixelová mozaika na drop</span></div></div>
+    <div class="beat"><span class="tc">0:07–0:12</span><img src="img/ss-hriste.jpg" alt=""><div class="t"><b>Proměna zahrady (P4), případně bazénu (P1)</b><span>„Rekonstrukce do hotelového standardu“</span><span class="fx">Kling start/end, kamera stojí</span></div></div>
+    <div class="beat"><span class="tc">0:12–0:20</span><img src="img/bazen1.jpg" alt=""><div class="t"><b>Tři kroky přes Kling klipy (K02, K03, K06)</b><span>1 Zvolíte apartmán · 2 Smlouva · 3 Úrok 6 % p.a. každý měsíc · „Zajištěno zástavou na konkrétním apartmánu“</span><span class="fx">očíslované položky, hraje zelená</span></div></div>
+    <div class="beat"><span class="tc">0:20–0:25</span><img src="img/dron-den2.jpg" alt=""><div class="t"><b>Dron oblet s obrysem pozemku</b><span>„Po 5 letech podíl na růstu hodnoty“</span><span class="fx">kreslený obrys</span></div></div>
+    <div class="beat"><span class="tc">0:25–0:30</span><img src="img/dron-noc.jpg" alt=""><div class="t"><b>Karta myRENTIA</b><span>„Podklady k investici pošleme e-mailem.“ + malé upozornění na riziko</span><span class="fx">světelný přejezd</span></div></div>
+  </div>
+
+  <h3><span class="tag tC">C</span>&nbsp; Místo, které má všechno <span style="color:var(--muted);font-weight:500">· 35 s</span></h3>
+  <div class="board">
+    <div class="beat"><span class="tc">0:00–0:03</span><img src="img/kola-vylet.jpg" alt=""><div class="t"><b>Pár na elektrokolech, za nimi Pálava (S1)</b><span>„Mezi Lednicí a Valticemi“</span><span class="fx">háček · kamera couvá před koly</span></div></div>
+    <div class="beat"><span class="tc">0:03–0:09</span><img src="img/zamek-lednice.jpg" alt=""><div class="t"><b>3D koláč, zoom z Brna, Vídně a Bratislavy na Hlohovec</b><span>Brno 51 min · Vídeň a Bratislava cca hodina · Valtice 6 min</span><span class="fx">mapový nálet</span></div></div>
+    <div class="beat"><span class="tc">0:09–0:14</span><img src="img/dron-noc2.jpg" alt=""><div class="t"><b>POI z dronu</b><span>Resort s pozemkem, Valtice, Lednice, Hraniční zámeček, rybníky, Pálava</span><span class="fx">štítky s vodicí čarou</span></div></div>
+    <div class="beat"><span class="tc">0:14–0:26</span><img src="img/virivka.jpg" alt=""><div class="t"><b>Roční období: jaro kola, léto bazén, podzim degustace, zima sauna a vířivka</b><span>„Důvody přijet v každém ročním období“</span><span class="fx">sezónní stíračka se štítkem období</span></div></div>
+    <div class="beat"><span class="tc">0:26–0:31</span><img src="img/a26-obyvak2.jpg" alt=""><div class="t"><b>Interiér apartmánu se sluncem (K06)</b><span>„A když tam nejste, apartmán se pronajímá.“</span><span class="fx">průlet oknem ven na vinici</span></div></div>
+    <div class="beat"><span class="tc">0:31–0:35</span><img src="img/dron-noc.jpg" alt=""><div class="t"><b>Karta</b><span>„Získejte přednostní přístup k neveřejné nabídce.“</span><span class="fx">světelný přejezd</span></div></div>
+  </div>
+  <p class="note ok">Na výšku stavím primárně z tvých svislých fotek a záběrů. Kde svislý materiál chybí, použiju úpravu „na třetiny“ ze Splavů (nahoře grafika s položkami, pod ní dvě čisté šířky) a pro vybrané vizualizace z webu nechám Kling generovat rovnou 9:16. Čtverec 1:1 beru ze středu 16:9 masteru (1080 px na výšku, bez ztráty).</p>
+</section>
+
+<!-- KLING -->
+<section id="kling">
+  <div class="sechead"><span class="eyebrow">06 · Kling 4.0 · 1080p · 3,75 kr/s</span><h2>Rozpohybování vizualizací z webu</h2>
+  <p class="lead">Kamera pomalu, nic se nepřestavuje, bez lidí a textu. Prompty začínají „keep every wall, window, beam and furniture exactly as in the image“. Kling vrací 24 fps, před střihem převod na 25p a kontrola mezer.</p></div>
+  <div class="grid g4">
+    <div class="shot"><figure><img src="img/titulni.jpg" alt="Fasáda za soumraku"></figure><div class="id"><b>K01</b><span class="tag tA">A</span><span class="tag tB">B</span></div><p>Fasáda: pomalý nájezd, světla se rozžhaví, tráva se vlní, mraky plují.</p><span class="meta">16:9 + 9:16 · 2× 5 s · 37,5 kr</span></div>
+    <div class="shot"><figure><img src="img/bazen1.jpg" alt="Vnitřní bazén"></figure><div class="id"><b>K02</b><span class="tag tA">A</span><span class="tag tC">C</span></div><p>Bazén: boční jízda podél hladiny, vlnky a odlesky na trámech.</p><span class="meta">16:9 · 5 s · 18,75 kr</span></div>
+    <div class="shot"><figure><img src="img/virivka.jpg" alt="Vířivka"></figure><div class="id"><b>K03</b><span class="tag tC">C</span></div><p>Vířivka: bublinky, LED, plamínky svíček, mírný nájezd.</p><span class="meta">16:9 · 5 s · 18,75 kr</span></div>
+    <div class="shot"><figure><img src="img/restaurace3.jpg" alt="Restaurace"></figure><div class="id"><b>K04</b><span class="tag tC">C</span></div><p>Restaurace: jízda vpřed mezi stoly, slunce z oken.</p><span class="meta">16:9 · 5 s · 18,75 kr</span></div>
+    <div class="shot"><figure><img src="img/a26-obyvak2.jpg" alt="Obývák apartmánu"></figure><div class="id"><b>K06</b><span class="tag tA">A</span><span class="tag tC">C</span></div><p>Obývák: sluneční pruhy se posouvají, záclona dýchá, nájezd k oknu s vinicí.</p><span class="meta">16:9 + 9:16 · 2× 5 s · 37,5 kr</span></div>
+    <div class="shot"><figure><img src="img/a11-loznice1.jpg" alt="Ložnice"></figure><div class="id"><b>K07</b><span class="tag tA">A</span></div><p>Ložnice: záclony v průvanu, pomalý oblouk kolem postele.</p><span class="meta">16:9 · 5 s · 18,75 kr</span></div>
+    <div class="shot"><figure><img src="img/vinoteka1.jpg" alt="Vinárna"></figure><div class="id"><b>K05</b><span class="tag tOpt">volitelné</span></div><p>Vinárna: jízda k baru, závěsná světla.</p><span class="meta">16:9 · 5 s · 18,75 kr</span></div>
+    <div class="shot"><figure><img src="img/kola-nabijeni.jpg" alt="Nabíjení elektrokol"></figure><div class="id"><b>K08</b><span class="tag tOpt">volitelné</span></div><p>Kolárna: nájezd k otevřeným dveřím na vinici.</p><span class="meta">16:9 · 5 s · 18,75 kr</span></div>
+  </div>
+  <p class="note ok">V01–V03: tři klipy 9:16 přímo z tvých svislých fotek (vyberu, až je pošleš). 3× 5 s = 56,25 kr.</p>
+</section>
+
+<!-- PROMENY -->
+<section id="promeny">
+  <div class="sechead"><span class="eyebrow">07 · Start a end frame</span><h2>Proměny: skutečný stav → vizualizace</h2>
+  <p class="lead">Čtyři vizualizace na webu vznikly přímo z fotek současného stavu se stejnou perspektivou. Kontrola prolnutím 50 % sedí (trámy, okna, kamna). Kling: start = skutečný stav, end = vizualizace, kamera stojí. Tohle je nejsilnější materiál pro koncept B.</p></div>
+
+  <div class="grid" style="gap:22px">
+    <div class="grid" style="gap:8px"><div class="id" style="display:flex;gap:8px;align-items:center"><b style="font-family:var(--f-mono)">P4 · zahrada a hřiště</b><span class="tag tB">B</span><span class="tag tC">C</span><span class="meta" style="font:500 .74rem var(--f-mono);color:var(--muted)">5 s · 18,75 kr · exteriér</span></div>
+      <div class="pair"><figure class="lbl" data-l="SKUTEČNÝ STAV"><img src="img/ss-hriste.jpg" alt="Současné hřiště"></figure><figure class="lbl" data-l="VIZUALIZACE"><img src="img/hriste1.jpg" alt="Vizualizace hřiště"></figure><figure><img src="img/blend-hriste.jpg" alt="Prolnutí 50 procent"><figcaption>prolnutí 50 %: sedí</figcaption></figure></div></div>
+
+    <div class="grid" style="gap:8px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b style="font-family:var(--f-mono)">P5 · fasáda, den → večer, nový nápis</b><span class="tag tB">B</span><span class="meta" style="font:500 .74rem var(--f-mono);color:var(--muted)">5 s · 18,75 kr · nutné zarovnat měřítko</span></div>
+      <div class="pair"><figure class="lbl" data-l="SKUTEČNÝ STAV"><img src="img/ss-fasada.jpg" alt="Současná fasáda penzionu"></figure><figure class="lbl" data-l="VIZUALIZACE"><img src="img/titulni.jpg" alt="Vizualizace fasády"></figure><figure><img src="img/blend-fasada.jpg" alt="Prolnutí"><figcaption>jiný výřez: zarovnám přes matchTemplate, jinak pixelová mozaika místo Klingu</figcaption></figure></div></div>
+
+    <div class="grid" style="gap:8px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b style="font-family:var(--f-mono)">P1 · bazén</b><span class="tag tB">B</span><span class="tag tOpt">interiér současného stavu</span><span class="meta" style="font:500 .74rem var(--f-mono);color:var(--muted)">5 s · 18,75 kr</span></div>
+      <div class="pair"><figure class="lbl" data-l="SKUTEČNÝ STAV"><img src="img/ss-bazen.jpg" alt="Současný bazén"></figure><figure class="lbl" data-l="VIZUALIZACE"><img src="img/bazen2.jpg" alt="Vizualizace bazénu"></figure><figure><img src="img/blend-bazen.jpg" alt="Prolnutí"><figcaption>prolnutí 50 %: geometrie sedí, mění se dlažba a lehátka</figcaption></figure></div></div>
+
+    <div class="grid" style="gap:8px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b style="font-family:var(--f-mono)">P2 / P3 · restaurace</b><span class="tag tB">B</span><span class="tag tOpt">interiér současného stavu</span><span class="meta" style="font:500 .74rem var(--f-mono);color:var(--muted)">1–2× 5 s · 18,75 kr každý</span></div>
+      <div class="pair"><figure class="lbl" data-l="SKUTEČNÝ STAV"><img src="img/ss-restaurace2.jpg" alt="Současná restaurace"></figure><figure class="lbl" data-l="VIZUALIZACE"><img src="img/restaurace3.jpg" alt="Vizualizace restaurace"></figure><figure><img src="img/blend-restaurace2.jpg" alt="Prolnutí"><figcaption>P3 · sedí okna, trámy i zelená kamna; P2 (pohled od baru) taky</figcaption></figure></div></div>
+
+    <div class="grid" style="gap:8px"><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><b style="font-family:var(--f-mono)">P6 · průchod dveřmi</b><span class="tag tA">A</span><span class="meta" style="font:500 .74rem var(--f-mono);color:var(--muted)">5 s · 18,75 kr</span></div>
+      <div class="pair"><figure class="lbl" data-l="START"><img src="img/a11-predsina.jpg" alt="Předsíň apartmánu A.11"></figure><figure class="lbl" data-l="END"><img src="img/a11-loznice1.jpg" alt="Ložnice apartmánu A.11"></figure><figure><img src="img/blend-predsina.jpg" alt="Prolnutí"><figcaption>předsíň A.11 má na konci dveře do ložnice: kamera projde dveřmi a skončí v záběru ložnice</figcaption></figure></div></div>
+  </div>
+  <p class="note">Psal jsi „interiéry současného stavu asi ne“. P1 až P3 proto beru jen pokud řekneš ano (otázka 3). Bez nich zůstávají P4, P5 a P6. Navíc P7 a P8: poslední snímek tvého FPV jako start a vizualizace bazénu nebo restaurace jako end, tedy průlet z dronu dovnitř. FPV záběry samotné nezkracuju ani neprodlužuju, Kling jen naváže za ně.</p>
+</section>
+
+<!-- SEEDANCE -->
+<section id="seedance">
+  <div class="sechead"><span class="eyebrow">08 · Seedance 2.5 · 1080p · 16 kr/s (720p 7 kr/s)</span><h2>Lidé ve vizualizacích</h2>
+  <p class="lead">Seedance jen tam, kde má být život. Lidé přirození, spíš zezadu, z profilu nebo v neostrosti, nepózují do kamery, žádné detaily dětí. Páry kolem 35–55, neutrální oblečení, pozdní léto. Prostředí zůstává přesně podle vizualizace (start frame).</p></div>
+  <div class="grid g3">
+    <div class="shot"><figure><img src="img/kola-vylet.jpg" alt="Pár na elektrokolech ve vinicích"></figure><div class="id"><b>S1 · kola</b><span class="tag tC">C</span><span class="tag tA">A</span></div><p>Pár projíždí kolem kamery, kamera couvá před nimi, vinice a Pálava v pozadí. Nejdřív test 720p (35 kr), pak 1080p.</p><span class="prompt">tracking shot moving backwards in front of a couple riding e-bikes on a vineyard path, natural pedaling, wind in clothes, Pálava hills behind, keep landscape exactly</span><span class="meta">16:9 · 5 s · 80 kr + test 35 kr</span></div>
+    <div class="shot"><figure><img src="img/vinoteka2.jpg" alt="Vinárna s dlouhými stoly"></figure><div class="id"><b>S2 · degustace</b><span class="tag tA">A</span><span class="tag tC">C</span></div><p>Vinař nalévá do sklenek, čtyři hosté u dlouhého stolu zády nebo z profilu, tlumené světlo, ťuknutí.</p><span class="prompt">winemaker pouring white wine into glasses for four guests at the long table, guests seen from behind and side, relaxed conversation, warm light, room unchanged</span><span class="meta">16:9 · 5 s · 80 kr</span></div>
+    <div class="shot"><figure><img src="img/a21-obyvak2.jpg" alt="Obývák s jídelním stolem"></figure><div class="id"><b>S3 · ranní káva</b><span class="tag tA">A</span></div><p>Žena s hrnkem kávy dojde k oknu s výhledem na vinici, protisvětlo, jen silueta.</p><span class="prompt">a woman in a soft sweater walks slowly to the window holding a coffee cup, backlit silhouette, sunlight beams, apartment interior unchanged</span><span class="meta">16:9 · 5 s · 80 kr</span></div>
+    <div class="shot"><figure><img src="img/virivka.jpg" alt="Vířivka"></figure><div class="id"><b>S4 · vířivka</b><span class="tag tC">C</span></div><p>Pár ve vířivce se sklenkami vína, záběr zezadu, bublinky, svíčky. Alternativa: žena pomalu plave v bazénu (bazén 1).</p><span class="prompt">a couple relaxing in the hot tub seen from behind holding wine glasses, bubbles, candles flickering, calm, room unchanged</span><span class="meta">16:9 · 5 s · 80 kr</span></div>
+    <div class="shot"><figure><img src="img/restaurace1.jpg" alt="Restaurace"></figure><div class="id"><b>S5 · snídaně</b><span class="tag tOpt">volitelné</span></div><p>Obsluha nese kávu, hosté u stolů v neostrosti.</p><span class="meta">16:9 · 5 s · 80 kr</span></div>
+    <div class="shot"><figure><img src="img/a11-predsina.jpg" alt="Předsíň"></figure><div class="id"><b>S6 · klika na kód</b><span class="tag tOpt">volitelné</span></div><p>Detail ruky, která zadá kód na klice a otevře apartmán. Obraz pro „užívat kdykoli“.</p><span class="meta">16:9 · 5 s · 80 kr</span></div>
+  </div>
+</section>
+
+<!-- EFEKTY -->
+<section id="efekty">
+  <div class="sechead"><span class="eyebrow">09 · Přechody a efekty</span><h2>Co se k tomuhle druhu videa hodí</h2>
+  <p class="lead">Učebnu nemám v tomhle prostředí k dispozici, proto jsou to moje návrhy. Pošli názvy efektů z učebny a namapuju je na tyhle místa.</p></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Efekt</th><th>Kde</th><th>Jak</th></tr></thead>
+    <tbody>
+      <tr><td>Pixelová mozaika SKUTEČNÝ STAV → VIZUALIZACE</td><td>B, fasáda a dron</td><td>na drop hudby, jako u Splavů</td></tr>
+      <tr><td>Proměna se stojící kamerou</td><td>B, P1–P5</td><td>Kling start/end</td></tr>
+      <tr><td>Průchod dveřmi, průlet oknem</td><td>A, P6; C, obývák → vinice</td><td>Kling start/end</td></tr>
+      <tr><td>FPV průlet dovnitř</td><td>A, C</td><td>poslední snímek FPV jako start, vizualizace jako end</td></tr>
+      <tr><td>Kreslený obrys pozemku + okolí do ČB</td><td>A, B</td><td>planární tracking dronu, styl jako fotky na webu</td></tr>
+      <tr><td>Text za objektem (za střechou, za cypřiši)</td><td>A „VLASTNIT“, háčky</td><td>maska z hloubky nebo rotoskop</td></tr>
+      <tr><td>Whip pan, rozmazaný střih</td><td>mezi drony a FPV</td><td>na doby</td></tr>
+      <tr><td>Střih podle tvaru</td><td>A: hladina bazénu ↔ víno ve sklence; vířivka ↔ sklenka</td><td>přes dva Kling klipy</td></tr>
+      <tr><td>Stíračka popředím</td><td>dron míjí cypřiš nebo sloup pergoly</td><td>z tvých záběrů</td></tr>
+      <tr><td>Slider před a po</td><td>bannery B, mikroukázka ve videu</td><td>svislá linka přejíždí</td></tr>
+      <tr><td>Sezónní stíračka se štítkem</td><td>C, čtyři roční období</td><td>barevný štítek období</td></tr>
+      <tr><td>Speed ramp</td><td>FPV háčky</td><td>jen v reklamách, ne v hlavním filmu</td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- DRON -->
+<section id="dron">
+  <div class="sechead"><span class="eyebrow">10 · Tvoje drony a FPV</span><h2>Dron, pozemek, POI a koláč</h2></div>
+  <div class="grid g2">
+    <div class="box"><h3>Vyznačení pozemku</h3>
+      <p style="margin-top:6px;font-size:.92rem">Tři pozemky podle tebe: dům na rohu (budova A), za ním směrem k poli druhý dům (budova B, sem přijde wellness) a třetí pozemek jako cíp, který končí na druhém rohu, s jejich zahradou a loukou. Web to potvrzuje („Za budovou B se nachází prostorná zahrada“). Na tvém záběru nakreslím obrys, okolí stáhnu do ČB a přidám štítky Budova A, Budova B, Zahrada. Přesné hranice chci z katastru.</p></div>
+    <div class="box"><h3>POI fotka a 3D koláč</h3>
+      <p style="margin-top:6px;font-size:.92rem">POI (poi.py): resort s pozemkem a štítky Valtice 6 min, Lednice 6 min, Mikulov 18 min, Hraniční zámeček, rybníky, Pálava a body, které mi označíš na timeline. 3D koláč (mapa-3d-okoli) s časy autem a nájezdem z Brna, Vídně a Bratislavy. Barvy dronů: platí tvoje.</p></div>
+  </div>
+</section>
+
+<!-- BANNERY -->
+<section id="bannery">
+  <div class="sechead"><span class="eyebrow">11 · Všechny velikosti</span><h2>Bannery</h2>
+  <p class="lead">Každý koncept ve dvou vizuálech, ať v testu dál vidíme, co dělá obraz. Styl webu (Poppins, olivová, teplá bílá), na fotce musí být vidět dům, ne obloha, žádná půlka černá. U vizualizací štítek VIZUALIZACE.</p></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Kanál</th><th>Rozměry</th><th class="num">Kusů</th></tr></thead>
+    <tbody>
+      <tr><td>Meta Feed</td><td>1080×1350 (4:5), 1080×1080 (1:1)</td><td class="num">12</td></tr>
+      <tr><td>Meta Stories a Reels</td><td>1080×1920 s bezpečnými zónami</td><td class="num">6</td></tr>
+      <tr><td>Meta odkaz, Google responzivní</td><td>1200×628, 1200×1200, 960×1200</td><td class="num">18</td></tr>
+      <tr><td>Google a Sklik obsahová síť</td><td>300×250, 336×280, 300×600, 160×600, 728×90, 970×250, 320×100, 320×50, 480×300, 970×310</td><td class="num">60</td></tr>
+      <tr><td>Logo a YouTube</td><td>logo 1200×1200 a 1200×300, náhled 1280×720 pro tři videa 16:9</td><td class="num">5</td></tr>
+      <tr><td colspan="2"><b>Celkem</b> (Sklik rozměry před exportem ověřím podle aktuální specifikace)</td><td class="num"><b>~101</b></td></tr>
+    </tbody></table></div>
+</section>
+
+<!-- KREDITY -->
+<section id="kredity">
+  <div class="sechead"><span class="eyebrow">12 · Higgsfield, zůstatek 5 792 kr</span><h2>Rozpočet kreditů</h2>
+  <p class="lead">Ceny ověřené odhadem na Higgsfieldu dnes. Generuju až po tvém „generuj“.</p></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Položka</th><th>Obsah</th><th class="num">Základ</th><th class="num">Volitelné</th></tr></thead>
+    <tbody>
+      <tr><td>Kling 4.0, vizualizace z webu</td><td>K01, K02, K03, K04, K06, K07 (8 klipů vč. dvou 9:16)</td><td class="num">150 kr</td><td class="num">+37,5 (K05, K08)</td></tr>
+      <tr><td>Kling 4.0, z tvých svislých fotek</td><td>V01–V03</td><td class="num">56 kr</td><td class="num"></td></tr>
+      <tr><td>Kling 4.0, proměny a průchody</td><td>P4, P5, P6 + P7 FPV průlet</td><td class="num">75 kr</td><td class="num">+75 (P1, P2, P3, P8)</td></tr>
+      <tr><td>Seedance 2.5, lidé</td><td>S1–S4 v 1080p + test S1 v 720p</td><td class="num">355 kr</td><td class="num">+160 (S5, S6)</td></tr>
+      <tr><td>Rezerva na opakování</td><td>Kling ~10 %, Seedance 1 pokus</td><td class="num">110 kr</td><td class="num"></td></tr>
+      <tr><td><b>Celkem</b></td><td>obrázky pro 9:16 a zarovnání dělám zdarma (ChatGPT, nano banana)</td><td class="num"><b>~746 kr</b></td><td class="num"><b>+272,5</b></td></tr>
+    </tbody></table></div>
+  <p class="note">Kling se do tvých 300 vejde (281 kr základ). Seedance 1080p je dražší, než jsi počítal: za 300 kr jsou to jen tři 5s klipy. Proto návrh S1–S4 za 320 kr + test. Levnější varianta: Seedance 2.0 v 1080p (12 kr/s, pět klipů za 300 kr), nebo 2.5 v 720p s upscalem.</p>
+</section>
+
+<!-- POSTUP -->
+<section id="postup">
+  <div class="sechead"><span class="eyebrow">13 · Pořadí a brány</span><h2>Postup</h2></div>
+  <ol class="steps">
+    <li><span>Podklady: web, ceník, správa pronájmu, půdorysy, TEST4, fotky současného stavu</span><span class="gate done">hotovo</span></li>
+    <li><span>Tvoje upravené fotky (i na výšku), drony a FPV na timeline s markery lokalit</span><span class="gate">čekám</span></li>
+    <li><span>Střih hlavního filmu 16:9 a 9:16 na hudbu, karty „sem přijde AI“</span><span class="gate">Franta</span></li>
+    <li><span>Kling a Seedance podle schváleného seznamu, převod na 25p</span><span class="gate">„generuj“ + kredity</span></li>
+    <li><span>Titulky, štítky, obrys pozemku, POI, 3D koláč, karta s kontaktem</span><span class="gate">Franta</span></li>
+    <li><span>Čistý master → reklamy A, B, C × 16:9, 9:16, 1:1</span><span class="gate">Franta</span></li>
+    <li><span>Bannery ve všech velikostech</span><span class="gate">Franta</span></li>
+    <li><span>Schvalovací stránka + ZIP ke stažení pro Rentii</span><span class="gate">ověřit naživo</span></li>
+    <li><span>Spuštění testu ABC na 7 dní, report každé pondělí</span><span class="gate">Rentia</span></li>
+  </ol>
+</section>
+
+<!-- OTAZKY -->
+<section id="otazky">
+  <div class="sechead"><span class="eyebrow">14 · Potřebuju od tebe</span><h2>Otázky</h2></div>
+  <ol class="q">
+    <li><b>Cena „od“.</b> Nejlevnější A.11 za 2 818 750 Kč je na webu v ústní rezervaci. Psát „od 2,8 mil. Kč“ (jako web), nebo od nejlevnější volné B.22 za 3 258 750 Kč?</li>
+    <li><b>Crowdfunding.</b> Smí v reklamě být „6 % p.a.“ a „zástava na apartmánu“? Kdo texty B schválí (Rentia, myRENTIA, advokátka)? A je pravda, že crowdfunding financuje právě tuhle přestavbu, ať to můžu napsat?</li>
+    <li><b>Současný stav uvnitř.</b> Bazén a restaurace mají perfektní dvojice pro proměnu (P1–P3). Použít v B, nebo jen exteriér?</li>
+    <li><b>Bannery 01 a 04 z TEST4.</b> Pošli je, ať stavím na vítězných vizuálech.</li>
+    <li><b>Efekty z učebny.</b> Názvy nebo odkaz, ať použiju přesně ty.</li>
+    <li><b>Zvuk.</b> Hlas (ElevenLabs Pohádkář jako u Splavů), nebo jen titulky a hudba? Odkud hudba?</li>
+    <li><b>Hranice pozemku.</b> Čísla parcel (Hlohovec č. p. 228?), nebo ti obrys nakreslím na snímek a opravíš ho.</li>
+    <li><b>Vyhlídka s kioskem</b> ve vinicích patří Usedlosti. Je součástí projektu? Dát ji do POI?</li>
+    <li><b>Rozpočet na reklamu a délka testu.</b> TEST4 jel ~1 170 Kč denně. Stejně, tedy ~400 Kč na koncept?</li>
+    <li><b>Lidé v Seedance.</b> Páry 35–55 stačí, nebo chceš i rodinu s dětmi (hřiště)?</li>
+    <li><b>BLACK standard.</b> Na webu vidím jen světlé vizualizace. Existují i tmavé BLACK?</li>
+    <li><b>Wellness.</b> V půdorysech 2025 je wellness A.28 v budově A, web i ty říkáte budova B. Beru budovu B.</li>
+  </ol>
+</section>
+
+<p class="foot">Zdroje: resortvinohrady.cz (stav 23. 11. 2026, ceník a texty z prezentace), PDF Resort Vinohrady: správa pronájmu, usedlostpodvinohrady.cz, report Meta Ads TEST4, půdorysy Penzion A/B a Rozdělení na BJ (Hlohovec 228, 2025). Vizualizace jsou z webu projektu, náhledy jsou zmenšené.</p>
+</div>
