@@ -1,7 +1,7 @@
 # Resort Vinohrady (Hlohovec) – kampaň
 
 Schvalovací stránka s plánem: https://claude.ai/artifact/AS2eESwv4u1LzfxNJjd3vY (zdroj `schvaleni/index.html`).
-Stav 23. 11. 2026: jen plán, nic se negenerovalo. Čeká se na Frantovy fotky (i na výšku), drony a FPV.
+Stav 23. 11. 2026: jen plán, nic se negenerovalo. Web ani mikrosajt neděláme (resortvinohrady.cz existuje), výstupem jsou videa a bannery. Čeká se na Frantovy fotky (i na výšku), drony a FPV.
 
 ## Podklady
 - `podklady/web-resortvinohrady/` – všechny obrázky z resortvinohrady.cz v plném rozlišení (1920 px), PDF o správě pronájmu.
