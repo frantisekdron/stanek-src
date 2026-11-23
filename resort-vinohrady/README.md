@@ -36,3 +36,7 @@ Stav 23. 11. 2026: jen plán, nic se negenerovalo. Web ani mikrosajt neděláme 
 
 ## Ceny Higgsfield (ověřeno 23. 11. 2026)
 Kling 4.0 1080p 3,75 kr/s · Seedance 2.5 1080p 16 kr/s, 720p 7 kr/s · Seedance 2.0 1080p 12 kr/s, 720p 4,5 kr/s.
+
+## Rozhodnutí
+- Komentář: ElevenLabs, hlas Pohádkář (jako Staré Splavy).
+- Žádný web ani mikrosajt.
